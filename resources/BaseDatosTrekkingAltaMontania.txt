@@ -1,0 +1,5 @@
+Ascenso Volcán Osorno;12;2652
+Trekking Volcán Calbuco;10;2015
+Sendero Paso Desolación;6;1100
+Ascenso Volcán Puntiagudo;14;2493
+Trekking Cerro La Picada;8;1716
