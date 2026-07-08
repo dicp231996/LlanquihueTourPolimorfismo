@@ -32,6 +32,7 @@ El programa se ejecuta en la clase LlanquihueTour que se encuentra en el paquete
 
 Esta clase llamará a la de GestorServicios, a su vez esta llamará a CargarDatos, la cual leera todos los archivos txt de la carpeta resorces que tengan el prefijo "BaseDatos".
 
-Obtendra todos los nombres de las clases que se encuentren dentro del paquete model.entities y con base en los substrings resultantes de quitar el prefijo a los nombres de los archivos txt conseguira instanciar de manera correcta las clases correspondientes a cada base de datos.
+Obtendra todos los nombres de las clases que se encuentren dentro del paquete model.entities y 
+con base en los substrings resultantes de quitar el prefijo a los nombres de los archivos txt conseguira instanciar de manera correcta las clases correspondientes a cada base de datos.
 
 Las clases del paquete de entities heredan sus parametros base de la superclase ServicioTuristico que se encuentra en el paquete model.core.
