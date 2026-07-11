@@ -1,8 +1,7 @@
-package util;
+package data;
 
 import java.util.ArrayList;
 
-import data.CargarDatos;
 import model.core.ServicioTuristico;
 
 public class GestorServicios {
@@ -32,7 +31,7 @@ public class GestorServicios {
             System.out.println("No hay servicios registrados en el sistema.");
         } else {
             for (ServicioTuristico servicio : catalogoServicios) {
-                System.out.println(servicio.toString());
+                System.out.println(servicio.informacionTour());
                 System.out.println("----------------------------------------");
             }
         }

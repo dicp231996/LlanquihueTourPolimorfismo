@@ -1,8 +1,9 @@
 package model.entities.people;
 
 import model.core.Persona;
+import model.interfaces.Registrable;
 
-public class ColaboradorExterno extends Persona {
+public class ColaboradorExterno extends Persona implements Registrable {
     private String tipoServicio;
     private String nombreEmpresa;
 
@@ -45,5 +46,10 @@ public class ColaboradorExterno extends Persona {
         sb.append("\n Empresa: ").append(nombreEmpresa);
         sb.append("\n Servicio que provee: ").append(tipoServicio);
         return sb.toString();
+    }
+
+    @Override
+    public void mostarResumen() {
+
     }
 }

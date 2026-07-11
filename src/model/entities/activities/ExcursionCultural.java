@@ -1,8 +1,9 @@
 package model.entities.activities;
 
 import model.core.ServicioTuristico;
+import model.interfaces.Registrable;
 
-public class ExcursionCultural extends ServicioTuristico {
+public class ExcursionCultural extends ServicioTuristico implements Registrable {
     private String lugarHistorico;
 
     // Constructor por defecto
@@ -28,11 +29,16 @@ public class ExcursionCultural extends ServicioTuristico {
 
     // Sobrescritura del método toString integrando el super.toString()
     @Override
-    public String toString() {
+    public String informacionTour() {
         StringBuilder sb = new StringBuilder();
         // Se obtiene la cadena de la superclase y se concatena el atributo propio
-        sb.append(super.toString()).append("\n");
+        sb.append(super.informacionTour()).append("\n");
         sb.append("Destino del Tour: ").append(lugarHistorico).append("\n");
         return sb.toString();
+    }
+
+    @Override
+    public void mostarResumen() {
+
     }
 }

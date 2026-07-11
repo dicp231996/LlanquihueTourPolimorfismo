@@ -1,0 +1,5 @@
+2021;10;Mercedes-Benz Sprinter;LDPX-45
+2023;8;Ford Transit;KCVR-88
+2019;12;Hyundai H-1;HFTG-21
+2022;10;Volkswagen Crafter;PBCX-12
+2020;15;Peugeot Boxer;SDFG-90

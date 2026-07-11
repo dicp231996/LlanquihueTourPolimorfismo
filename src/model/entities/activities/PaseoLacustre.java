@@ -1,8 +1,9 @@
 package model.entities.activities;
 
 import model.core.ServicioTuristico;
+import model.interfaces.Registrable;
 
-public class PaseoLacustre extends ServicioTuristico {
+public class PaseoLacustre extends ServicioTuristico implements Registrable {
     private String tipoEmbarcacion;
 
     // Constructor por defecto
@@ -28,11 +29,16 @@ public class PaseoLacustre extends ServicioTuristico {
 
     // Sobrescritura del método toString con el formato solicitado
     @Override
-    public String toString() {
+    public String informacionTour() {
         StringBuilder sb = new StringBuilder();
         // Se obtiene la cadena de la superclase y se concatena el atributo propio
-        sb.append(super.toString()).append("\n");
+        sb.append(super.informacionTour()).append("\n");
         sb.append("Tipo de Embarcación: ").append(tipoEmbarcacion).append("\n");
         return sb.toString();
+    }
+
+    @Override
+    public void mostarResumen() {
+
     }
 }

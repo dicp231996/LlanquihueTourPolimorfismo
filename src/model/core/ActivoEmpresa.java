@@ -1,7 +1,7 @@
 package model.core;
 
 public abstract class ActivoEmpresa {
-    private int anioCompra; // Reemplazada la 'ñ' por 'ni'
+    private int anioCompra;
     private int vidaUtil;
     private String modelo;
 
@@ -44,7 +44,7 @@ public abstract class ActivoEmpresa {
     }
 
     // Método propio para estructurar y devolver la información del transporte
-    public String informacionVehiculo() {
+    public String informacionActivo() {
         StringBuilder sb = new StringBuilder();
         sb.append("Modelo: ").append(modelo).append("\n");
         sb.append("Año de Compra: ").append(anioCompra).append("\n");

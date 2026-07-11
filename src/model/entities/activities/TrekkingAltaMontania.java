@@ -1,8 +1,9 @@
 package model.entities.activities;
 
 import model.core.ServicioTuristico;
+import model.interfaces.Registrable;
 
-public class TrekkingAltaMontania extends ServicioTuristico {
+public class TrekkingAltaMontania extends ServicioTuristico implements Registrable {
     // Atributo propio de la subclase (ej. metros de altitud a alcanzar)
     private int alturaAscenso;
 
@@ -29,11 +30,16 @@ public class TrekkingAltaMontania extends ServicioTuristico {
 
     // Sobrescritura del método toString con el formato unificado
     @Override
-    public String toString() {
+    public String informacionTour() {
         StringBuilder sb = new StringBuilder();
         // Se obtiene la cadena de la superclase y se concatena el atributo propio
-        sb.append(super.toString()).append("\n");
+        sb.append(super.informacionTour()).append("\n");
         sb.append("Altura de ascenso: ").append(alturaAscenso).append(" m.s.n.m.\n");
         return sb.toString();
+    }
+
+    @Override
+    public void mostarResumen() {
+        System.out.println();
     }
 }

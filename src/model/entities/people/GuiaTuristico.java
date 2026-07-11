@@ -1,8 +1,9 @@
 package model.entities.people;
 
 import model.core.Persona;
+import model.interfaces.Registrable;
 
-public class GuiaTuristico extends Persona {
+public class GuiaTuristico extends Persona implements Registrable {
     private String nivelIngles;
     private String especialidad;
 
@@ -46,5 +47,10 @@ public class GuiaTuristico extends Persona {
         sb.append("\n Nivel de Inglés: ").append(nivelIngles);
         sb.append("\n Especialidad: ").append(especialidad);
         return sb.toString();
+    }
+
+    @Override
+    public void mostarResumen() {
+        System.out.println("Persona");
     }
 }

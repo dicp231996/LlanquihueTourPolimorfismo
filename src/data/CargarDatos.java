@@ -54,7 +54,7 @@ public class CargarDatos {
     private void procesarArchivoDinamicamente(File archivo) {
         // Llamamos al nuevo método para obtener el nombre real de la clase
         String nombreClase = extraerNombreClase(archivo.getName());
-        String paquete = "model.entities.";
+        String paquete = "model.entities.activities.";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             // Busca la clase en tiempo de ejecución utilizando el nombre limpio

@@ -33,12 +33,9 @@ public class ServicioTuristico {
         this.duracionHoras = duracionHoras;
     }
 
-    // Sobrescritura del método toString utilizando StringBuilder
-    @Override
-    public String toString() {
+    public String informacionTour() {
         StringBuilder sb = new StringBuilder();
-        sb.append("====== Información del tour ======");
-        sb.append("\nnombre: ").append(nombre).append("\n");
+        sb.append("nombre: ").append(nombre).append("\n");
         sb.append("Duracion estimada: ").append(duracionHoras).append(" Horas");
         return sb.toString();
     }

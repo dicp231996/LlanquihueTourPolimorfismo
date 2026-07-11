@@ -1,8 +1,9 @@
 package model.entities.activities;
 
 import model.core.ServicioTuristico;
+import model.interfaces.Registrable;
 
-public class RutaGastronomica extends ServicioTuristico {
+public class RutaGastronomica extends ServicioTuristico implements Registrable {
     // Atributo propio de la subclase
     private int numeroParadas;
 
@@ -29,11 +30,16 @@ public class RutaGastronomica extends ServicioTuristico {
 
     // Sobrescritura del método toString con el formato solicitado
     @Override
-    public String toString() {
+    public String informacionTour() {
         StringBuilder sb = new StringBuilder();
         // Se obtiene la cadena de la superclase y se concatena el atributo propio
-        sb.append(super.toString()).append("\n");
+        sb.append(super.informacionTour()).append("\n");
         sb.append("Número de paradas: ").append(numeroParadas).append("\n");
         return sb.toString();
+    }
+
+    @Override
+    public void mostarResumen() {
+
     }
 }

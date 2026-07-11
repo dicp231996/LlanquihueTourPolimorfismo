@@ -1,8 +1,8 @@
-package app;
+package ui;
 
 import java.nio.file.Paths;
 
-import util.GestorServicios;
+import data.GestorServicios;
 
 public class LlanquihueTour {
     public static void main(String[] args) {
