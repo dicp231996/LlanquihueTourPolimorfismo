@@ -49,7 +49,8 @@ public class ColaboradorExterno extends Persona implements Registrable {
     }
 
     @Override
-    public void mostarResumen() {
-
+    public String mostrarResumen() {
+        return String.format("[PROVEEDOR EXTERNO] Empresa: %s | Contacto: %s | Servicio provisto: %s%n",
+                getNombreEmpresa(), getNombre(), getTipoServicio());
     }
 }

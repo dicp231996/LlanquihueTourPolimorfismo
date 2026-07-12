@@ -38,7 +38,8 @@ public class PaseoLacustre extends ServicioTuristico implements Registrable {
     }
 
     @Override
-    public void mostarResumen() {
-
+    public String mostrarResumen() {
+        return String.format("[ACTIVIDAD - PASEO LACUSTRE] Navegación: %s | Experiencia: Vista panorámica desde embarcación | Zarpe sujeto a clima.%n",
+                getNombre());
     }
 }

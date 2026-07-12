@@ -39,7 +39,8 @@ public class RutaGastronomica extends ServicioTuristico implements Registrable {
     }
 
     @Override
-    public void mostarResumen() {
-
+    public String mostrarResumen() {
+        return String.format("[ACTIVIDAD - RUTA GASTRONÓMICA] Experiencia: %s | Detalle: Incluye degustación de productos típicos y visita a productores locales.%n",
+                getNombre());
     }
 }

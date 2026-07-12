@@ -38,7 +38,8 @@ public class ExcursionCultural extends ServicioTuristico implements Registrable 
     }
 
     @Override
-    public void mostarResumen() {
-
+    public String mostrarResumen() {
+        return String.format("[ACTIVIDAD - EXCURSIÓN CULTURAL] Recorrido: %s | Enfoque: Patrimonio e historia local | Incluye paradas fotográficas.%n",
+                getNombre());
     }
 }

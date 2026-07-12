@@ -50,7 +50,8 @@ public class GuiaTuristico extends Persona implements Registrable {
     }
 
     @Override
-    public void mostarResumen() {
-        System.out.println("Persona");
+    public String mostrarResumen() {
+        return String.format("[STAFF INTERNO] Nombre: %s | Especialidad: %s | Nivel de Inglés: %s%n",
+                getNombre(), getEspecialidad(), getNivelIngles());
     }
 }

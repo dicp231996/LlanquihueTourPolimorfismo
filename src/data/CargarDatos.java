@@ -1,32 +1,38 @@
 package data;
-import model.core.ServicioTuristico;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CargarDatos {
+    private Map<Class<?>, ArrayList<Object>> baseDatosLlanquihueTour;
 
-    private ArrayList<ServicioTuristico> listaServicios;
+    private final String[] PAQUETES_POSIBLES = {
+            "model.entities.activities.",
+            "model.entities.assets.",
+            "model.entities.people."
+    };
 
     public CargarDatos() {
-        this.listaServicios = new ArrayList<>();
+        this.baseDatosLlanquihueTour = new HashMap<>();
     }
 
-    public void cargarDesdeDirectorio(String rutaDirectorio) {
-        File directorio = new File(rutaDirectorio);
+    public void cargarDesdeDirectorio(String ruta) {
+        File directorio = new File(ruta);
 
         if (!directorio.exists() || !directorio.isDirectory()) {
-            System.err.println("Directorio inválido o no encontrado: " + rutaDirectorio);
+            System.err.println("El directorio no existe en la ruta: " + ruta);
             return;
         }
 
-        File[] archivosTxt = directorio.listFiles((dir, nombre) -> nombre.toLowerCase().endsWith(".txt"));
+        File[] archivosTxt = directorio.listFiles((dir, name) -> name.toLowerCase().endsWith(".txt"));
 
         if (archivosTxt == null || archivosTxt.length == 0) {
-            System.out.println("No se encontraron archivos .txt en: " + rutaDirectorio);
+            System.out.println("No se encontro el archivo txt en: " + ruta);
             return;
         }
 
@@ -35,73 +41,90 @@ public class CargarDatos {
         }
     }
 
-    // Nuevo método para procesar y limpiar el nombre del archivo
     private String extraerNombreClase(String nombreArchivo) {
-        // 1. Se quita la extensión .txt
-        String nombreSinExtension = nombreArchivo.replace(".txt", "");
-
-        // 2. Se verifica si el nombre comienza con "BaseDatos" (respetando mayúsculas/minúsculas)
+        String nombreSinExtension = nombreArchivo.replace(".txt","");
         String prefijo = "BaseDatos";
-        if (nombreSinExtension.startsWith(prefijo)) {
-            // 3. Se obtiene el substring cortando desde donde termina "BaseDatos"
+        if (nombreArchivo.startsWith(prefijo)) {
             return nombreSinExtension.substring(prefijo.length());
         }
-
-        // Si el archivo no tiene el prefijo, se devuelve tal cual
         return nombreSinExtension;
     }
 
+    private Class<?> buscarClase(String nombreClase) {
+        for (String paquete : PAQUETES_POSIBLES) {
+            try {
+                return Class.forName(paquete + nombreClase);
+            } catch (ClassNotFoundException e) {
+
+            }
+        }
+        return null;
+    }
+
     private void procesarArchivoDinamicamente(File archivo) {
-        // Llamamos al nuevo método para obtener el nombre real de la clase
         String nombreClase = extraerNombreClase(archivo.getName());
-        String paquete = "model.entities.activities.";
+        Class<?> claseDinamica = buscarClase(nombreClase);
+
+        if (claseDinamica == null) {
+            System.err.println("Clase no encontrada en ninguno de los paquetes del sistema: " + nombreClase);
+            return;
+        }
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-            // Busca la clase en tiempo de ejecución utilizando el nombre limpio
-            Class<?> claseDinamica = Class.forName(paquete + nombreClase);
-
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split(";");
 
-                if (partes.length == 3) {
-                    Constructor<?>[] constructores = claseDinamica.getConstructors();
-                    Constructor<?> constructorAdecuado = null;
+                Constructor<?>[] constructores = claseDinamica.getConstructors();
+                Constructor<?> constructorAdecuado = null;
 
-                    for (Constructor<?> c : constructores) {
-                        if (c.getParameterCount() == 3) {
-                            constructorAdecuado = c;
-                            break;
-                        }
-                    }
-
-                    if (constructorAdecuado != null) {
-                        Class<?>[] tiposParametros = constructorAdecuado.getParameterTypes();
-                        Object[] argumentos = new Object[3];
-
-                        argumentos[0] = partes[0];
-                        argumentos[1] = Integer.parseInt(partes[1]);
-
-                        if (tiposParametros[2] == int.class || tiposParametros[2] == Integer.class) {
-                            argumentos[2] = Integer.parseInt(partes[2]);
-                        } else {
-                            argumentos[2] = partes[2];
-                        }
-
-                        ServicioTuristico instancia = (ServicioTuristico) constructorAdecuado.newInstance(argumentos);
-                        listaServicios.add(instancia);
+                for (Constructor<?> c : constructores) {
+                    if (c.getParameterCount() == partes.length) {
+                        constructorAdecuado = c;
+                        break;
                     }
                 }
+
+                if (constructorAdecuado != null) {
+                    Class<?>[] tipoParametros = constructorAdecuado.getParameterTypes();
+                    Object[] argumentos = new Object[partes.length];
+
+                    for (int i = 0; i < partes.length; i++) {
+                        if (tipoParametros[i] == int.class || tipoParametros[i] == Integer.class) {
+                            argumentos[i] = Integer.parseInt(partes[i]);
+                        }
+                        else if (tipoParametros[i] == double.class || tipoParametros[i] == Double.class) {
+                            argumentos[i] = Double.parseDouble(partes[i]);
+                        }
+                        else {
+                            argumentos[i] = partes[i];
+                        }
+                    }
+                    Object instancia = constructorAdecuado.newInstance(argumentos);
+
+                    baseDatosLlanquihueTour.putIfAbsent(claseDinamica,new ArrayList<>());
+                    baseDatosLlanquihueTour.get(claseDinamica).add(instancia);
+                }
+                else {
+                    System.err.println("No hay un contructor compatible para " + partes.length + "argumentos en " + nombreClase);
+                }
             }
-        } catch (ClassNotFoundException e) {
-            System.err.println("Clase no encontrada: " + paquete + nombreClase + ". Verifica que el nombre después de 'BaseDatos' sea idéntico a la clase.");
         } catch (Exception e) {
-            System.err.println("Error al instanciar dinámicamente desde " + archivo.getName() + ": " + e.getMessage());
+            System.err.println("Error al procesar el archivo: " + archivo.getName() + ":" + e.getMessage());
         }
     }
 
-    public ArrayList<ServicioTuristico> getListaServicios() {
-        return listaServicios;
+    public java.util.Set<Class<?>> obtenerClasesCargadas() {
+        return baseDatosLlanquihueTour.keySet();
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> ArrayList<T> obtenerLista(Class<T> clase) {
+        ArrayList<Object> lista = baseDatosLlanquihueTour.get(clase);
+        if (lista == null) {
+            return new ArrayList<>();
+        }
+        return (ArrayList<T>) lista;
     }
 }
 

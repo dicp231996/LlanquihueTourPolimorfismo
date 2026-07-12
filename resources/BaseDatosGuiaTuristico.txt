@@ -3,3 +3,4 @@ Sofia Castro;17444333-2;Del Salvador 99, Puerto Varas;Nativo;Avistamiento de Ave
 Javier Lopez;18333222-1;San Ignacio 55, Frutillar;Intermedio;Rutas Gastronómicas
 Camila Soto;15222111-K;Centenario 88, Puerto Octay;Avanzado;Historia y Patrimonio
 Diego Ramirez;19111000-4;Colón 45, Puerto Varas;Básico;Ciclismo de Ruta
+Daniel Campos Pérez;19284616-1;Gonzalo Bulnes 2544, Quinta Normal;A1;Excursión Cultural

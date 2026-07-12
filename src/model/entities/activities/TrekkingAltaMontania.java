@@ -39,7 +39,8 @@ public class TrekkingAltaMontania extends ServicioTuristico implements Registrab
     }
 
     @Override
-    public void mostarResumen() {
-        System.out.println();
+    public String mostrarResumen() {
+        return String.format("[ACTIVIDAD - TREKKING] Ruta: %s | Dificultad: Alta | Requiere equipo técnico especial.%n",
+                getNombre());
     }
 }

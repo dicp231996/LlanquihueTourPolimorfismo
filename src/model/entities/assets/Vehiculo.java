@@ -39,7 +39,8 @@ public class Vehiculo extends ActivoEmpresa implements Registrable {
         }
 
     @Override
-    public void mostarResumen() {
-
+    public String mostrarResumen() {
+        return String.format("[Flota terrestre] Modelo: %s | Patente: %s | Vida útil: %d años%n",
+                getModelo(), getPatente(), getAnioCompra());
     }
 }
