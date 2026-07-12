@@ -4,3 +4,5 @@ Javier Lopez;18333222-1;San Ignacio 55, Frutillar;Intermedio;Rutas Gastronómica
 Camila Soto;15222111-K;Centenario 88, Puerto Octay;Avanzado;Historia y Patrimonio
 Diego Ramirez;19111000-4;Colón 45, Puerto Varas;Básico;Ciclismo de Ruta
 Daniel Campos Pérez;19284616-1;Gonzalo Bulnes 2544, Quinta Normal;A1;Excursión Cultural
+Ana Belen Alejandra Campos Pérez;20426662-0;Gonzalo Bulnes 2544, Quinta Normal;C1;Trekking de alta montaña
+Daniel Campos;19284616-1;Gonzalo Bulnes 2544;A2;Excursion Cultural
