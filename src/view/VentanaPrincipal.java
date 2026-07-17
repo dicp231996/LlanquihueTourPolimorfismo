@@ -3,14 +3,13 @@ package view;
 import data.CargarDatos;
 import data.GestorEntidades;
 import data.GestorEscritura;
-import model.interfaces.Registrable;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Set;
+import java.lang.Runnable;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -22,6 +21,8 @@ public class VentanaPrincipal extends JFrame {
     private JTextArea areaVisualizacion;
     private JButton btnAgregarRegistro;
     private JButton btnFinalizar;
+    private JButton btnActualizar;
+
 
     public VentanaPrincipal(CargarDatos cargador, GestorEscritura escritor) {
         this.cargador = cargador;
@@ -67,10 +68,14 @@ public class VentanaPrincipal extends JFrame {
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
         btnAgregarRegistro = new JButton("Agregar Nuevo Registro");
+        btnActualizar = new JButton("Actualizar Pantalla");
         btnFinalizar = new JButton("Finalizar");
 
+
         panelBotones.add(btnAgregarRegistro);
+        panelBotones.add(btnActualizar);
         panelBotones.add(btnFinalizar);
+
         add(panelBotones, BorderLayout.SOUTH);
 
         comboFiltro.addActionListener(new ActionListener() {
@@ -84,6 +89,17 @@ public class VentanaPrincipal extends JFrame {
         btnAgregarRegistro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                // Definimos el comportamiento que ocurrirá de forma asíncrona (Callback)
+                Runnable instruccionRecarga = new Runnable() {
+                    @Override
+                    public void run() {
+                        cargador.recargar();
+                        String seleccionActual = (String) comboFiltro.getSelectedItem();
+                        cargarDatosEnPantalla(seleccionActual);
+                    }
+                };
+
                 VentanaRegistro ventanaRegistro = new VentanaRegistro(cargador, escritor);
                 ventanaRegistro.setVisible(true);
             }
@@ -95,33 +111,30 @@ public class VentanaPrincipal extends JFrame {
                 System.exit(0);
             }
         });
+
+
+        btnActualizar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 1. Sobreescritura en RAM: Obligar al sistema a leer los archivos nuevamente
+                cargador.recargar();
+
+                // 2. Conservar el estado del filtro visual
+                String seleccionActual = (String) comboFiltro.getSelectedItem();
+
+                // 3. Sobreescritura Visual: Reemplazar todo el texto del JTextArea
+                cargarDatosEnPantalla(seleccionActual);
+            }
+        });
     }
 
     private void cargarDatosEnPantalla(String filtro) {
-        areaVisualizacion.setText("");
+        String textoProcesado = gestorEntidades.generarReportePolimorfico(filtro);
 
-        ArrayList<Registrable> inventarioGlobal = gestorEntidades.obtenerInventarioCompleto();
+        // 2. Actualizamos el componente visual
+        areaVisualizacion.setText(textoProcesado);
 
-        if (inventarioGlobal.isEmpty()) {
-            areaVisualizacion.append("No hay datos registrados en el sistema.\n");
-            return;
-        }
-
-        int contador = 0;
-        for (Registrable instancia : inventarioGlobal) {
-            String nombreClaseInstancia = instancia.getClass().getSimpleName();
-
-            if (filtro.equals("Todos") || nombreClaseInstancia.equals(filtro)) {
-                ;
-                areaVisualizacion.append(instancia.mostrarResumen()+"\n");
-                areaVisualizacion.append("----------------------------------------------------------------------\n");
-                contador++;
-            }
-        }
-
-        areaVisualizacion.append("\nTotal de registros mostrados: " + contador);
-
-        // Forzar al scroll a volver arriba después de cargar texto largo
+        // 3. Forzamos al scroll a volver arriba después de cargar el texto
         areaVisualizacion.setCaretPosition(0);
     }
 }

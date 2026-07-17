@@ -3,7 +3,6 @@ package ui;
 import data.CargarDatos;
 import data.GestorEscritura;
 import view.VentanaPrincipal;
-import view.VentanaRegistro;
 
 import javax.swing.*;
 

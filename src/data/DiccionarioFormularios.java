@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import model.entities.assets.Vehiculo;
+import model.entities.people.Cliente;
 import model.entities.people.GuiaTuristico;
 import model.entities.people.ColaboradorExterno;
 import model.entities.activities.TrekkingAltaMontania;
@@ -34,6 +35,10 @@ public class DiccionarioFormularios {
 
         diccionarioEtiquetas.put(ColaboradorExterno.class, new String[]{
                 "Nombre Completo", "Rut", "Dirección", "Tipo de Servicio","Empresa representada"
+        });
+
+        diccionarioEtiquetas.put(Cliente.class, new String[]{
+                "Nombre Completo", "Rut", "Dirección", "Correo de contacto", "Tarjeta  asociada", "Cliente frecuente"
         });
 
         // Paquete Activities

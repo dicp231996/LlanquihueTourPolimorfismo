@@ -2,6 +2,7 @@ package model.entities.people;
 
 import model.core.Persona;
 import model.interfaces.Registrable;
+import model.valueobjects.Rut;
 
 public class ColaboradorExterno extends Persona implements Registrable {
     private String tipoServicio;
@@ -13,7 +14,7 @@ public class ColaboradorExterno extends Persona implements Registrable {
     }
 
     // Constructor con parámetros
-    public ColaboradorExterno(String nombre, String rut, String direccion, String tipoServicio, String nombreEmpresa) {
+    public ColaboradorExterno(String nombre, Rut rut, String direccion, String tipoServicio, String nombreEmpresa) {
         super(nombre, rut, direccion);
         this.tipoServicio = tipoServicio;
         this.nombreEmpresa = nombreEmpresa;

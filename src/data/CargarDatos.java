@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class CargarDatos {
     private Map<Class<?>, ArrayList<Object>> baseDatosLlanquihueTour;
+    private String rutaDirectorioActual;
 
     private final String[] PAQUETES_POSIBLES = {
             "model.entities.activities.",
@@ -22,7 +23,10 @@ public class CargarDatos {
     }
 
     public void cargarDesdeDirectorio(String ruta) {
+        this.rutaDirectorioActual = ruta;
+
         File directorio = new File(ruta);
+        baseDatosLlanquihueTour.clear();
 
         if (!directorio.exists() || !directorio.isDirectory()) {
             System.err.println("El directorio no existe en la ruta: " + ruta);
@@ -96,6 +100,18 @@ public class CargarDatos {
                         else if (tipoParametros[i] == double.class || tipoParametros[i] == Double.class) {
                             argumentos[i] = Double.parseDouble(partes[i]);
                         }
+                        else if (tipoParametros[i] == boolean.class || tipoParametros[i] == Boolean.class) {
+                            argumentos[i] = Boolean.parseBoolean(partes[i]);
+                        }
+                        else if (tipoParametros[i] == model.valueobjects.Rut.class) {
+                            argumentos[i] = new model.valueobjects.Rut(partes[i]);
+                        }
+                        else if (tipoParametros[i] == model.valueobjects.CorreoContacto.class) {
+                            argumentos[i] = new model.valueobjects.CorreoContacto(partes[i]);
+                        }
+                        else if (tipoParametros[i] == model.valueobjects.TarjetaCredito.class) {
+                            argumentos[i] = new model.valueobjects.TarjetaCredito(partes[i]);
+                        }
                         else {
                             argumentos[i] = partes[i];
                         }
@@ -125,6 +141,12 @@ public class CargarDatos {
             return new ArrayList<>();
         }
         return (ArrayList<T>) lista;
+    }
+
+    public void recargar() {
+        if (rutaDirectorioActual != null) {
+            cargarDesdeDirectorio(rutaDirectorioActual);
+        }
     }
 }
 

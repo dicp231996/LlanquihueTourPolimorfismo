@@ -2,6 +2,7 @@ package model.entities.people;
 
 import model.core.Persona;
 import model.interfaces.Registrable;
+import model.valueobjects.Rut;
 
 public class GuiaTuristico extends Persona implements Registrable {
     private String nivelIngles;
@@ -13,7 +14,7 @@ public class GuiaTuristico extends Persona implements Registrable {
     }
 
     // Constructor con parámetros (incluye los de la superclase)
-    public GuiaTuristico(String nombre, String rut, String direccion, String nivelIngles, String especialidad) {
+    public GuiaTuristico(String nombre, Rut rut, String direccion, String nivelIngles, String especialidad) {
         super(nombre, rut, direccion); // Invoca al constructor de Persona
         this.nivelIngles = nivelIngles;
         this.especialidad = especialidad;
@@ -41,9 +42,7 @@ public class GuiaTuristico extends Persona implements Registrable {
     @Override
     public String informacionPersonal() {
         StringBuilder sb = new StringBuilder();
-        // Se recupera la cadena base de la clase padre Persona
         sb.append(super.informacionPersonal());
-        // Se anexan los atributos específicos de GuiaTuristico
         sb.append("\n Nivel de Inglés: ").append(nivelIngles);
         sb.append("\n Especialidad: ").append(especialidad);
         return sb.toString();

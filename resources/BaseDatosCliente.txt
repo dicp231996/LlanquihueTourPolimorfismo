@@ -1,0 +1,5 @@
+Juan Pérez;15.234.567-K;Av. Providencia 123;juan.perez@gmail.com;4242424242424242;true
+María González;18.765.432-1;Calle Las Araucarias 456;maria.g@hotmail.com;4111111111111111;false
+Carlos Soto;12.345.678-9;Pje. Los Copihues 789;csoto@empresa.cl;5555555555554444;true
+Ana Silva;9.876.543-0;Av. Apoquindo 321;ana.silva@yahoo.com;4222222222222;false
+Luis Rojas;20.123.987-5;Gran Avenida 654;lrojas@duocuc.cl;4444444444444448;true
