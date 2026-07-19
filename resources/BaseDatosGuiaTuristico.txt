@@ -1,11 +1,11 @@
-Carlos Mendez;16555444-3;Los Pinos 12, Llanquihue;Avanzado;Alta Montaña
-Sofia Castro;17444333-2;Del Salvador 99, Puerto Varas;Nativo;Avistamiento de Aves
-Javier Lopez;18333222-1;San Ignacio 55, Frutillar;Intermedio;Rutas Gastronómicas
-Camila Soto;15222111-K;Centenario 88, Puerto Octay;Avanzado;Historia y Patrimonio
-Diego Ramirez;19111000-4;Colón 45, Puerto Varas;Básico;Ciclismo de Ruta
-Daniel Campos Pérez;19284616-1;Gonzalo Bulnes 2544, Quinta Normal;A1;Excursión Cultural
-Ana Belen Alejandra Campos Pérez;20426662-0;Gonzalo Bulnes 2544, Quinta Normal;C1;Trekking de alta montaña
-Daniel Campos;19284616-1;Gonzalo Bulnes 2544;A2;Excursion Cultural
+Carlos Mendez;16.555.444-3;Los Pinos 12, Llanquihue;Avanzado;Alta Montaña
+Sofia Castro;17.444.333-2;Del Salvador 99, Puerto Varas;Nativo;Avistamiento de Aves
+Javier Lopez;18.333.222-1;San Ignacio 55, Frutillar;Intermedio;Rutas Gastronómicas
+Camila Soto;15.222.111-K;Centenario 88, Puerto Octay;Avanzado;Historia y Patrimonio
+Diego Ramirez;19.111.000-4;Colón 45, Puerto Varas;Básico;Ciclismo de Ruta
+Daniel Campos Pérez;19.284.616-1;Gonzalo Bulnes 2544, Quinta Normal;A1;Excursión Cultural
+Ana Belen Alejandra Campos Pérez;20.426.662-0;Gonzalo Bulnes 2544, Quinta Normal;C1;Trekking de alta montaña
+Daniel Campos;19.284.616-1;Gonzalo Bulnes 2544;A2;Excursion Cultural
 Carlos Campos;10.111.555-7;Gonzalo Bulnes 2544, Quinta Normal;A1;Paseo Lacustre
 Karina Epullanca;15.111.222-8;Dorsal 123, Renca;A2;Excursion Cultural
 Diego Albadis;15.444.555-7;Tacora 2573, Independencia;B1;Ruta Gastronomica

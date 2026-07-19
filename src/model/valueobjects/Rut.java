@@ -1,53 +1,87 @@
 package model.valueobjects;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+/**
+ * Clase que representa el Rol Único Tributario (RUT) chileno como un (Value Object).
+ * Se encarga de almacenar, formatear y validar la correcta estructura del RUT.
+ * @author Daniel Campos
+ * @version 1.0.0
+ */
 
 public class Rut {
-
-    private final String valor;
+    private String rut;
 
     /**
-     * Expresión regular que valida dos formatos comunes:
-     * 1. Con puntos y guion: 12.345.678-9 o 1.234.567-K
-     * 2. Sin puntos y con guion: 12345678-9 o 1234567-k
+     * Constructor por defecto.
+     * Inicializa el RUT con el estado "Sin registro".
      */
-    private static final String REGEX_FORMATO_RUT = "^(\\d{1,2}(?:\\.\\d{3}){2}-[\\dkK]|\\d{7,8}-[\\dkK])$";
 
     public Rut() {
-        this.valor = "10.177.579-8";
-    }
-
-    public Rut(String valor) {
-        if (!validarFormato(valor)) {
-            throw new IllegalArgumentException("Error de formato: El RUT '" + valor + "' no cumple con la estructura esperada (XX.XXX.XXX-Y o XXXXXXXX-Y).");
-        }
-        this.valor = valor.trim().toUpperCase();
+        this.rut = "Sin registro";
     }
 
     /**
-     * Evalúa si la cadena de texto cumple con el patrón Regex establecido.
-     * @param rutTexto El RUT en formato String.
-     * @return true si el formato es válido, false en caso contrario.
+     * Constructor que inicializa el objeto validando y asignando un RUT específico.
+     *
+     * @param rut El RUT a registrar, el cual debe venir en el formato correcto (con puntos y guion).
      */
-    public static boolean validarFormato(String rutTexto) {
-        if (rutTexto == null || rutTexto.trim().isEmpty()) {
-            return false;
+
+    public Rut(String rut) {
+        setRut(rut);
+    }
+
+    //Metodos [Rut]
+
+    /**
+     * Obtiene el RUT registrado en el objeto.
+     *
+     * @return El RUT almacenado como cadena de caracteres.
+     */
+
+    public String getRut() {
+        return rut;
+    }
+
+    /**
+     * Establece y valida el RUT ingresado.
+     * El formato requerido debe incluir puntos y guion, aceptando de 2 a 3 dígitos
+     * antes del primer punto, y terminando con un dígito verificador del 0 al 9, o la letra K/k
+     * (ej. 12.345.678-9 o 123.456.789-K).
+     * el dígito verificador se almacena en mayúscula
+     * y, si el dígito ingresado es "0", se convierte automáticamente a "K".
+     *
+     * @param rutRegistrado El RUT que se desea validar y registrar.
+     * @throws IllegalArgumentException si el RUT proporcionado es nulo o no coincide con la expresión regular del formato requerido.
+     */
+
+    public void setRut(String rutRegistrado) {
+        // El cuantificador \\d{1,3} ahora acepta 1, 2 o 3 dígitos iniciales
+        if (rutRegistrado == null || !rutRegistrado.matches("^\\d{1,3}\\.\\d{3}\\.\\d{3}-[0-9Kk]$")){
+            throw new IllegalArgumentException("El RUT ingresado no cumple con el formato requerido.");
         }
 
-        Pattern patron = Pattern.compile(REGEX_FORMATO_RUT);
-        Matcher verificador = patron.matcher(rutTexto.trim());
+        int indiceGuion = rutRegistrado.indexOf("-");
+        String rutConGuion = rutRegistrado.substring(0, indiceGuion + 1);
+        String digitoVerificador = rutRegistrado.substring(indiceGuion + 1);
 
-        return verificador.matches();
+        digitoVerificador = digitoVerificador.toUpperCase();
+
+        if (digitoVerificador.equals("0")) {
+            digitoVerificador = "K";
+        }
+        this.rut = rutConGuion + digitoVerificador;
     }
 
-    public String getValor() {
-        return valor;
-    }
+    //Instancia de objeto
+
+    /**
+     * Retorna una representación en formato de texto del objeto Rut.
+     *
+     * @return Una cadena de caracteres con el prefijo "Rut: " seguido del valor almacenado.
+     */
 
     @Override
     public String toString() {
-        return valor;
+        return "Rut: " + rut;
     }
-}
 
+}

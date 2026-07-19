@@ -1,5 +1,5 @@
-Tour Herencia Alemana Frutillar;4;Teatro del Lago
-Recorrido Patrimonial Puerto Octay;3;Casa Niklitschek
-City Tour Puerto Varas;2;Iglesia Sagrado Corazón
-Ruta de los Colonos Llanquihue;4;Monumento a los Colonos
-Visita Museo Antonio Felmer;3;Museo Nueva Braunau
+Tour Herencia Alemana Frutillar;EXC-001;4;Teatro del Lago
+Recorrido Patrimonial Puerto Octay;EXC-002;3;Casa Niklitschek
+City Tour Puerto Varas;EXC-003;2;Iglesia Sagrado Corazón
+Ruta de los Colonos Llanquihue;EXC-004;4;Monumento a los Colonos
+Visita Museo Antonio Felmer;EXC-005;3;Museo Nueva Braunau

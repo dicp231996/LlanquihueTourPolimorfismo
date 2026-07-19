@@ -1,5 +1,5 @@
-Navegación Volcán Osorno;2;Catamarán
-Cruce de Lagos Peulla;8;Transbordador
-Paseo Bahía de Frutillar;1;Velero
-Travesía Saltos del Petrohué;3;Lancha
-Navegación Lago Todos los Santos;4;Embarcación menor
+Navegación Volcán Osorno;LAC-001;2;Catamarán
+Cruce de Lagos Peulla;LAC-002;8;Transbordador
+Paseo Bahía de Frutillar;LAC-003;1;Velero
+Travesía Saltos del Petrohué;LAC-004;3;Lancha
+Navegación Lago Todos los Santos;LAC-005;4;Embarcación menor

@@ -1,5 +1,5 @@
-Juan Perez;12345678-9;Calle Varas 123, Puerto Varas;Transporte;Buses Llanquihue
-Maria Gonzalez;9876543-2;Costanera 456, Frutillar;Alimentación;Cafetería Alemana
-Pedro Silva;15678901-K;Ruta 225 Km 4, Ensenada;Arriendo de Equipamiento;Andes Gear
-Ana Rojas;11223344-5;O'Higgins 789, Puerto Octay;Alojamiento;Hostal del Lago
-Luis Martinez;19888777-6;San Bernardo 321, Puerto Varas;Guía Local Especializado;Turismo Selva Valdiviana
+Juan Perez;12.345.678-9;Calle Varas 123, Puerto Varas;Transporte;Buses Llanquihue
+Maria Gonzalez;9.876.543-2;Costanera 456, Frutillar;Alimentación;Cafetería Alemana
+Pedro Silva;15.678.901-K;Ruta 225 Km 4, Ensenada;Arriendo de Equipamiento;Andes Gear
+Ana Rojas;11.223.344-5;O'Higgins 789, Puerto Octay;Alojamiento;Hostal del Lago
+Luis Martinez;19.888.777-6;San Bernardo 321, Puerto Varas;Guía Local Especializado;Turismo Selva Valdiviana
