@@ -10,3 +10,4 @@ Carlos Campos;10.111.555-7;Gonzalo Bulnes 2544, Quinta Normal;A1;Paseo Lacustre
 Karina Epullanca;15.111.222-8;Dorsal 123, Renca;A2;Excursion Cultural
 Diego Albadis;15.444.555-7;Tacora 2573, Independencia;B1;Ruta Gastronomica
 Mical Venegas;20.456.456-7;Dorsal 123, Renca;B1;Expedicion Cultural
+Daniel Campos;19.284.616-1;Gonzalo Bulnes 2544, Quinta Normal;A1;Excursion Cultural
